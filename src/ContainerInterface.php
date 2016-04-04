@@ -56,7 +56,7 @@ interface ContainerInterface extends \ArrayAccess
      * @param  string|null  $defaultMethod
      * @return mixed
      */
-    public function call($callback, array $parameters = [], $defaultMethod = null);
+    public function call($callback, array $parameters = array(), $defaultMethod = null);
 
     /**
      * 从容器中获取给定的抽象类型

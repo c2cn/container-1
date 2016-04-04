@@ -108,7 +108,7 @@ class Container implements ContainerInterface
      */
     public function forgetInstances()
     {
-        $this->instances = [];
+        $this->instances = array();
     }
 
     /**
@@ -118,9 +118,9 @@ class Container implements ContainerInterface
      */
     public function flush()
     {
-        $this->resolved = [];
-        $this->bindings = [];
-        $this->instances = [];
+        $this->resolved = array();
+        $this->bindings = array();
+        $this->instances = array();
     }
 
     /**
@@ -161,7 +161,7 @@ class Container implements ContainerInterface
      */
     protected function getClosure($abstract, $concrete)
     {
-        return function ($c, $parameters = []) use ($abstract, $concrete) {
+        return function ($c, $parameters = array()) use ($abstract, $concrete) {
             $resolve = ($abstract == $concrete) ? 'build' : 'make';
 
             return $c->{$resolve}($concrete, $parameters);
@@ -218,7 +218,7 @@ class Container implements ContainerInterface
      * @param  array  $parameters
      * @return \Closure
      */
-    public function wrap(\Closure $callback, array $parameters = [])
+    public function wrap(\Closure $callback, array $parameters = array())
     {
         return function () use ($callback, $parameters) {
             return $this->call($callback, $parameters);
@@ -228,7 +228,7 @@ class Container implements ContainerInterface
     /**
      * @inheritdoc
      */
-    public function call($callback, array $parameters = [], $defaultMethod = null)
+    public function call($callback, array $parameters = array(), $defaultMethod = null)
     {
         // #1 执行一个类的方法
         if (is_string($callback) && false !== strpos($callback, '@') || $defaultMethod) {
@@ -243,12 +243,12 @@ class Container implements ContainerInterface
                 throw new \InvalidArgumentException('Method not provided.');
             }
 
-            return $this->call([$this->make($segments[0]), $method], $parameters);
+            return $this->call(array($this->make($segments[0]), $method), $parameters);
         }
 
         // #2 执行一个函数、方法或闭包
 
-        $dependencies = [];
+        $dependencies = array();
 
         if (is_string($callback) && strpos($callback, '::') !== false) {
             $callback = explode('::', $callback);
