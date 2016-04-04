@@ -1,0 +1,26 @@
+{
+    "name": "grendizer/container",
+    "description": "一个简单但功能强大的自动注入依赖的服务容器",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "http://grendizerio.github.io/container/",
+    "support": {
+        "issues": "https://github.com/grendizerio/container/issues",
+        "source": "https://github.com/grendizerio/container.git"
+    },
+    "authors": [
+        {
+            "name": "Maofeng Zhang",
+            "email": "grendizer@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Grendizer\\Container\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
